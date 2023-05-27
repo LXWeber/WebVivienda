@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="ingresar()" [formGroup]="formUser">
+
+      <h2>Ingreso</h2>
+
+      <div class="mb-2">
+        <label class="form-label">e Mail:</label>
+        <input type="email" name="eMail" formControlName="eMail" class="form-control" placeholder="ejemplo@mail.com"/>
+        <div class="alert alert-danger mt-2" [hidden]="eMail.valid || eMail.pristine">
+          <span *ngIf="eMail.errors?.['required']">
+            Ingrese su eMail
+          </span>
+          <span *ngIf="eMail.errors?.['email']">
+            eMail inválido
+          </span>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Clave:</label>
+        <input type="password" name="password" formControlName="password" class="form-control" placeholder="Contraseña"/>
+        <div class="alert alert-danger mt-2" [hidden]="password.valid || password.pristine">
+          Ingrese su contraseña
+        </div>
+      </div>
+      <button class="btn btn-primary" [disabled]="formUser.invalid">
+        Entrar
+      </button>
+    </form>
+  </div>
+</div>

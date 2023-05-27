@@ -1,0 +1,96 @@
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="registrar()" [formGroup]="formRegister" class="container-fluid">
+
+      <h2>Registrarse:</h2>
+
+      <div class="alert alert-info alert-dismissible fade show">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Recuerde</strong> Debe ingresar sus datos tal y como figuran en su Documento Nacional de Identidad
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-floating mb-2">
+            <input type="text" name="nombre" id="nombre" formControlName="nombre" class="form-control"
+              placeholder="." />
+            <label class="form-label" for="nombre">Nombre</label>
+            <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine">
+              Ingrese su/s nombre/s
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-floating mb-2">
+            <input type="text" name="apellido" formControlName="apellido" class="form-control" placeholder="." />
+            <label class="form-label">Apellido:</label>
+            <div class="alert alert-danger mt-2" [hidden]="apellido.valid || apellido.pristine">
+              Ingrese su/s apellido/s
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-floating mb-2">
+            <input type="number" name="dni" formControlName="dni" class="form-control" placeholder="." />
+            <label class="form-label">DNI:</label>
+            <div class="alert alert-danger mt-2" [hidden]="dni.valid || dni.pristine">
+              Ingrese su numero de DNI
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group mb-2">
+            <label class="input-group-text control-label">Sexo:</label>
+            <select class="form-control" id="sex" formControlName="sex">
+              <option value="Hombre">H</option>
+              <option value="Mujer">M</option>
+              <option value="otros">X</option>
+            </select>
+            <!-- <div class="alert alert-danger mt-2" [hidden]="sex.valid || (eMail.untouched || password.untouched)">
+          Seleccione un Sexo
+        </div> -->
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div class="form-floating mb-2">
+        <input type="email" name="eMail" formControlName="eMail" class="form-control" placeholder=".@mail.com" />
+        <label class="form-label">e Mail:</label>
+        <div class="alert alert-danger mt-2" [hidden]="eMail.valid || eMail.pristine">
+          <span *ngIf="eMail.errors?.['required']">
+            Ingrese su eMail
+          </span>
+          <span *ngIf="eMail.errors?.['email']">
+            eMail inválido
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-floating mb-2">
+            <input type="password" name="password" formControlName="password" class="form-control" placeholder="." />
+            <label class="form-label">Contraseña:</label>
+            <div class="alert alert-danger mt-2" [hidden]="password.valid || password.pristine">
+              Crée una contraseña de al menos 6 caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-floating mb-2">
+            <input type="password" name="password2" formControlName="password2" class="form-control" placeholder="." />
+            <label class="form-label">Repita la Contraseña:</label>
+            <div class="alert alert-danger mt-2" [hidden]="password2.valid || password2.pristine">
+              Repita la contraseña
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="btn btn-primary" [disabled]="formRegister.invalid">
+        Entrar
+      </button>
+    </form>
+  </div>
+</div>
